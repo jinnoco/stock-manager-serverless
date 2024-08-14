@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id             BigInt   @id @default(autoincrement())
+  email          String   @unique
+  token          String
+  passwordDigest String   @map("password_digest")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @default(now()) @map("updated_at")
+  stocks         Stocks[]
+}
+
+model Stocks {
+  id           BigInt   @id @default(autoincrement())
+  name         String
+  image        String?
+  purchaseDate String   @map("purchase_date")
+  userId       BigInt   @map("user_id")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @default(now()) @map("updated_at")
+  user         Users    @relation(fields: [userId], references: [id])
+}
+
+model ARInternalMetadata {
+  key       String   @id
+  value     String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @map("updated_at")
+}
+
+model SchemaMigration {
+  version String @id
+}
