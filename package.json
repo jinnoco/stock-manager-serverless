@@ -45,10 +45,16 @@
   "dependencies": {
     "@prisma/client": "^5.18.0",
     "@types/aws-lambda": "^8.10.140",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
     "aws-cdk-lib": "2.144.0",
     "aws-sdk": "^2.1645.0",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "constructs": "^10.0.0",
     "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
     "source-map-support": "^0.5.21"
   },
   "lint-staged": {
