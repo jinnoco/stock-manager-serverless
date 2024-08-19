@@ -47,12 +47,7 @@ export const handler = async (
       throw error;
     }
 
-    return utils.successPostResponse({
-      message: "Signup successfully",
-      content: {
-        token: token,
-      },
-    });
+    return utils.successResponse(201, "Signup successfully", { token: token });
   } catch (error: any) {
     return utils.failedResponse(INTERNAL_SERVER_ERROR(error));
   } finally {

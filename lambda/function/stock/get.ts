@@ -30,8 +30,7 @@ export const handler = async (
       return utils.failedResponse(INTERNAL_SERVER_ERROR(error));
     }
 
-    return utils.successResponse({
-      message: "Stocks retrieved successfully",
+    return utils.successResponse(200, "Stocks retrieved successfully", {
       data: data,
     });
   } catch (error) {

@@ -50,12 +50,7 @@ export const handler = async (
     }
 
     const token = encodeJWT(data.email);
-    return utils.successPostResponse({
-      message: "Login successfully",
-      content: {
-        token: token,
-      },
-    });
+    return utils.successResponse(200, "Login successfully", { token: token });
   } catch (error: any) {
     return utils.failedResponse(INTERNAL_SERVER_ERROR(error));
   } finally {

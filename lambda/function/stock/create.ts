@@ -49,8 +49,7 @@ export const handler = async (
       return utils.failedResponse(INTERNAL_SERVER_ERROR(error));
     }
 
-    return utils.successPostResponse({
-      message: "Stock created successfully",
+    return utils.successResponse(201, "Stock created successfully", {
       data: data,
     });
   } catch (error) {
