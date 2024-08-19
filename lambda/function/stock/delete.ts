@@ -63,8 +63,7 @@ export const handler = async (
       return utils.failedResponse(NOT_FOUND);
     }
 
-    return utils.successResponse({
-      message: "Stock deleted successfully",
+    return utils.successResponse(200, "Stock deleted successfully", {
       data: data,
     });
   } catch (error: any) {

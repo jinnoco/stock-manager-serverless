@@ -62,8 +62,7 @@ export const handler = async (
       return utils.failedResponse(INTERNAL_SERVER_ERROR(error));
     }
 
-    return utils.successPostResponse({
-      message: "Stock updated successfully",
+    return utils.successResponse(201, "Stock updated successfully", {
       data: data,
     });
   } catch (error) {
